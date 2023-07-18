@@ -1,4 +1,4 @@
-module carry_save_block(Y,carryout,A,B,carryin);
+module cs_block(Y,carryout,A,B,carryin);
   output [3:0]Y;
   output carryout;
   input [3:0]A,B;
@@ -30,7 +30,7 @@ module Carry_skip_adder(Y,carryout,A,B,carryin);
 
   wire c4; // intermediate carry obtained from first block
   
-  carry_save_block cs1 (Y[3:0],c4,A[3:0],B[3:0],carryin);
-  carry_save_block cs2 (Y[7:4],carryout,A[7:4],B[7:4],c4); // pass the intermediate carry here
+  cs_block cs1 (Y[3:0],c4,A[3:0],B[3:0],carryin);
+  cs_block cs2 (Y[7:4],carryout,A[7:4],B[7:4],c4); // pass the intermediate carry here
   
 endmodule
